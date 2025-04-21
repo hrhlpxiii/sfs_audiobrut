@@ -15,7 +15,6 @@ def index():
 
 @app.route("/analyse", methods=["POST"])
 def analyse():
-    app.logger.info("🔄 Requête POST reçue sur /analyse")
     if 'audio' not in request.files:
         return jsonify({"error": "Fichier audio manquant dans la requête."}), 400
 

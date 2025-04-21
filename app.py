@@ -24,7 +24,8 @@ def analyse():
             file.save(tmp.name)
 
             # Analyse audio avec librosa
-            y, sr = librosa.load(tmp.name, duration=20.0)
+            # Chargement optimisé : 20s max, mono, 22050 Hz (plus rapide)
+            y, sr = librosa.load(tmp.name, sr=22050, mono=True, duration=20.0)
             tempo, _ = librosa.beat.beat_track(y=y, sr=sr)
             chroma = librosa.feature.chroma_stft(y=y, sr=sr).mean(axis=1)
             key_index = chroma.argmax()

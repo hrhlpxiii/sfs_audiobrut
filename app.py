@@ -29,7 +29,7 @@ def analyse():
             chroma = librosa.feature.chroma_stft(y=y, sr=sr).mean(axis=1)
             key_index = chroma.argmax()
             key = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'][key_index]
-            energy = librosa.feature.rms(y=y).mean()
+            energy = float(librosa.feature.rms(y=y).mean().item())
 
         os.unlink(tmp.name)
 

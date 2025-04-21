@@ -4,8 +4,6 @@ import tempfile
 import os
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
-
 app = Flask(__name__)
 
 @app.route("/", methods=["GET"])

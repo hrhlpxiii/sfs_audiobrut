@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 import librosa
 import tempfile
 import os
-import logging
 
 app = Flask(__name__)
 

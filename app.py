@@ -2,6 +2,9 @@ from flask import Flask, request, jsonify
 import librosa
 import tempfile
 import os
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 
@@ -15,6 +18,7 @@ def index():
 
 @app.route("/analyse", methods=["POST"])
 def analyse():
+    app.logger.info("🔄 Requête POST reçue sur /analyse")
     if 'audio' not in request.files:
         return jsonify({"error": "Fichier audio manquant dans la requête."}), 400
 
